@@ -15,12 +15,12 @@ export const SEO_BUILDS: SeoBuildPage[] = [
     headlineDescription:
       'Engineered specifically to hit 60-120+ FPS at 1080p settings in competitive titles like Fortnite, Valorant, GTA V, and CS2 while remaining strictly under the ₹50,000 budget cap.',
     partIds: {
-      cpu: 'cpu-r5-5600',
-      gpu: 'gpu-rx-7600',
+      cpu: 'cpu-r5-5600x',
+      gpu: 'gpu-rx-6600-8gb',
       motherboard: 'mb-gigabyte-b550m-ds3h-ac',
       ram: 'ram-corsair-vengeance-lpx-16gb-ddr4-3200',
       storage: 'ssd-crucial-p3-plus-1tb',
-      psu: 'psu-cooler-master-mwe-550',
+      psu: 'psu-deepcool-pk550d',
       case: 'case-cm-q300l',
       cooler: 'cooler-assassin-x-120-se',
     },
@@ -57,7 +57,7 @@ export const SEO_BUILDS: SeoBuildPage[] = [
       'The sweet spot build for gamers wanting maximum visual fidelity at 1080p Ultra, DLSS 3 frame generation, and smooth 1440p entry performance.',
     partIds: {
       cpu: 'cpu-r5-7600x',
-      gpu: 'gpu-rtx-4060',
+      gpu: 'gpu-rtx-4060-8gb',
       motherboard: 'mb-gigabyte-b650m-ds3h',
       ram: 'ram-corsair-vengeance-32gb-ddr5-6000',
       storage: 'ssd-wd-black-sn850x-1tb',
@@ -178,7 +178,7 @@ export const SEO_BUILDS: SeoBuildPage[] = [
     partIds: {
       cpu: 'cpu-i7-14700k',
       gpu: 'gpu-rtx-4070-ti-super',
-      motherboard: 'mb-asus-tuf-z790-plus',
+      motherboard: 'mb-asus-rog-strix-z790-e',
       ram: 'ram-crucial-pro-64gb-ddr5-5600',
       storage: 'ssd-samsung-990-pro-2tb',
       psu: 'psu-corsair-rm850x',
@@ -216,9 +216,9 @@ export const SEO_BUILDS: SeoBuildPage[] = [
     headlineDescription:
       'Engineered for maximum developer ergonomics. Fast compilation cycles, low noise, ample RAM for Docker containers and IDEs, and instant cold-boot speeds.',
     partIds: {
-      cpu: 'cpu-i5-13600k',
-      gpu: 'gpu-rtx-4060',
-      motherboard: 'mb-msi-b760-gaming-plus-wifi',
+      cpu: 'cpu-i5-14600k',
+      gpu: 'gpu-rtx-4060-8gb',
+      motherboard: 'mb-gigabyte-b760-gaming-x-ax',
       ram: 'ram-corsair-vengeance-32gb-ddr5-6000',
       storage: 'ssd-samsung-990-pro-1tb',
       psu: 'psu-corsair-rm750e-atx3',
@@ -258,7 +258,7 @@ export const SEO_BUILDS: SeoBuildPage[] = [
     partIds: {
       cpu: 'cpu-i7-14700k',
       gpu: 'gpu-rtx-4070-super',
-      motherboard: 'mb-asus-tuf-z790-plus',
+      motherboard: 'mb-asus-rog-strix-z790-e',
       ram: 'ram-crucial-pro-64gb-ddr5-5600',
       storage: 'ssd-samsung-990-pro-2tb',
       psu: 'psu-corsair-rm850x',
