@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0a0b0e;
+  --foreground: #ffffff;
+  --card: #12141a;
+  --card-border: #1e222d;
+  --neon-green: #00ff88;
+  --neon-blue: #00d4ff;
+  --neon-purple: #b347ff;
+  --neon-orange: #ff6b35;
+  --accent: #00ff88;
+  --muted: #6b7280;
+}
+
+@layer base {
+  * {
+    @apply border-[#1e222d];
+  }
+  body {
+    @apply bg-[#0a0b0e] text-white antialiased selection:bg-[#00ff88]/30 selection:text-[#00ff88];
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0f1117;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #252a36;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00ff88;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-[#12141a]/80 backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+  .neon-text {
+    @apply text-[#00ff88];
+  }
+  .neon-border {
+    @apply border-[#00ff88];
+  }
+  .btn-primary {
+    @apply bg-[#00ff88] text-black font-bold px-6 py-2.5 rounded-xl hover:bg-[#00e87a] transition-all duration-200 hover:shadow-lg hover:shadow-[#00ff88]/25 active:scale-[0.98];
+  }
+  .btn-secondary {
+    @apply bg-white/10 text-white font-semibold px-6 py-2.5 rounded-xl hover:bg-white/20 transition-all duration-200 border border-white/10 active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply text-gray-300 hover:text-white hover:bg-white/5 font-semibold px-4 py-2 rounded-xl transition-all;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#00ff88] via-[#00d4ff] to-[#b347ff];
+  }
+  .text-gradient-cyan {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#00d4ff] to-[#00ff88];
+  }
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:border-white/20;
+  }
+}
