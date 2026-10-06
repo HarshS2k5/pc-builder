@@ -20,6 +20,7 @@ import { ALL_COMPONENTS, BUILD_PRESETS, findComponentById } from '@/lib/pc-build
 import { checkCompatibility } from '@/lib/pc-builder/compatibility'
 import { calculatePower } from '@/lib/pc-builder/power-calculator'
 import { calculateBuildPrice, formatCurrency, getComponentPrice } from '@/lib/pc-builder/price-calculator'
+import { calculateBuildScore } from '@/lib/pc-builder/build-scorer'
 import { decodeShareCodeToParts } from '@/lib/pc-builder/build-storage'
 
 // Subcomponents & Modals
@@ -32,6 +33,9 @@ import { ComponentCompareModal } from './ComponentCompareModal'
 import { SmartWizardModal } from './SmartWizardModal'
 import { SavedBuildsModal } from './SavedBuildsModal'
 import { ShareBuildModal } from './ShareBuildModal'
+import { CheckPriceButton } from './CheckPriceButton'
+import { AffiliateBanner } from './AffiliateDisclosureModal'
+import { BuildReportModal } from './BuildReportModal'
 import { ReportButton } from '@/components/report/ReportButton'
 
 import {
@@ -58,6 +62,7 @@ import {
   Sliders,
   Gamepad2,
   BarChart3,
+  FileText,
   Flame,
 } from 'lucide-react'
 
@@ -104,6 +109,7 @@ export function PCBuilderMain() {
   const [showWizardModal, setShowWizardModal] = useState(false)
   const [showSavedModal, setShowSavedModal] = useState(false)
   const [showShareModal, setShowShareModal] = useState(false)
+  const [showReportModal, setShowReportModal] = useState(false)
   const [mobileSummaryOpen, setMobileSummaryOpen] = useState(false)
 
   // URL Config Hydration
@@ -121,6 +127,7 @@ export function PCBuilderMain() {
   const compatReport = useMemo(() => checkCompatibility(currentBuild), [currentBuild])
   const powerReport = useMemo(() => calculatePower(currentBuild), [currentBuild])
   const priceReport = useMemo(() => calculateBuildPrice(currentBuild, currency), [currentBuild, currency])
+  const scorecardReport = useMemo(() => calculateBuildScore(currentBuild), [currentBuild])
 
   // Component Management Handlers
   const handleSelectComponent = (comp: AnyComponent) => {
@@ -216,6 +223,14 @@ export function PCBuilderMain() {
               </button>
 
               <button
+                onClick={() => setShowReportModal(true)}
+                className="flex items-center gap-1.5 px-3.5 py-2 bg-[#00ff88]/15 hover:bg-[#00ff88]/25 text-[#00ff88] font-bold text-xs rounded-xl border border-[#00ff88]/30 transition-all hover:scale-[1.02]"
+              >
+                <FileText className="w-3.5 h-3.5" />
+                <span>Build Dossier</span>
+              </button>
+
+              <button
                 onClick={() => setShowSavedModal(true)}
                 className="flex items-center gap-1.5 px-3.5 py-2 bg-white/10 hover:bg-white/15 text-white font-medium text-xs rounded-xl border border-white/10 transition-colors"
               >
@@ -272,6 +287,9 @@ export function PCBuilderMain() {
             })}
           </div>
         </div>
+
+        {/* Affiliate Disclosure Banner */}
+        <AffiliateBanner />
       </div>
 
       {/* Main Content Area */}
@@ -366,6 +384,7 @@ export function PCBuilderMain() {
                               </div>
 
                               <div className="flex items-center gap-2">
+                                <CheckPriceButton component={item} currency={currency} variant="compact" />
                                 <button
                                   onClick={() => setModalCategory(category)}
                                   className="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition-colors"
@@ -675,6 +694,17 @@ export function PCBuilderMain() {
         onClose={() => setShowShareModal(false)}
         currentBuild={currentBuild}
         currency={currency}
+      />
+
+      {/* Hardware Dossier & Printable Build Report Modal */}
+      <BuildReportModal
+        isOpen={showReportModal}
+        onClose={() => setShowReportModal(false)}
+        parts={currentBuild}
+        currency={currency}
+        compatibility={compatReport}
+        power={powerReport}
+        scorecard={scorecardReport}
       />
     </div>
   )

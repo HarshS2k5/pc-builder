@@ -18,6 +18,7 @@ import {
 import { ALL_COMPONENTS } from '@/lib/pc-builder/components-data'
 import { checkCompatibility } from '@/lib/pc-builder/compatibility'
 import { formatCurrency, getComponentPrice } from '@/lib/pc-builder/price-calculator'
+import { CheckPriceButton } from './CheckPriceButton'
 import {
   Search,
   X,
@@ -444,21 +445,24 @@ export function ComponentSelectModal({
                         </span>
                       </div>
 
-                      <button
-                        onClick={() => {
-                          onSelect(comp)
-                          onClose()
-                        }}
-                        className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                          isSelected
-                            ? 'bg-white/10 text-gray-300 hover:bg-white/20'
-                            : status === 'incompatible'
-                            ? 'bg-red-500/20 text-red-300 hover:bg-red-500/30 border border-red-500/30'
-                            : 'bg-[#00ff88] text-black hover:bg-[#00e87a] shadow-lg shadow-[#00ff88]/20 hover:scale-[1.02]'
-                        }`}
-                      >
-                        {isSelected ? 'Selected' : 'Choose Part'}
-                      </button>
+                      <div className="flex items-center gap-2">
+                        <CheckPriceButton component={comp} currency={currency} variant="compact" />
+                        <button
+                          onClick={() => {
+                            onSelect(comp)
+                            onClose()
+                          }}
+                          className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+                            isSelected
+                              ? 'bg-white/10 text-gray-300 hover:bg-white/20'
+                              : status === 'incompatible'
+                              ? 'bg-red-500/20 text-red-300 hover:bg-red-500/30 border border-red-500/30'
+                              : 'bg-[#00ff88] text-black hover:bg-[#00e87a] shadow-lg shadow-[#00ff88]/20 hover:scale-[1.02]'
+                          }`}
+                        >
+                          {isSelected ? 'Selected' : 'Choose Part'}
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

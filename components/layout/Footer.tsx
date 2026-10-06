@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Cpu, Instagram, Github, Heart, Layers, Sparkles } from 'lucide-react'
+import { AffiliateDisclosureModal } from '@/components/pc-builder/AffiliateDisclosureModal'
 
 export function Footer() {
   return (
@@ -44,12 +45,22 @@ export function Footer() {
           {/* Navigation */}
           <div className="space-y-3">
             <h4 className="text-xs font-mono uppercase tracking-wider text-gray-400 font-bold">
-              Configurator
+              Configurator &amp; Tools
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/" className="text-gray-300 hover:text-[#00ff88] transition-colors">
                   Interactive PC Builder
+                </Link>
+              </li>
+              <li>
+                <Link href="/builds" className="text-gray-300 hover:text-[#00ff88] transition-colors">
+                  SEO Build Guides (50k - 1.5L)
+                </Link>
+              </li>
+              <li>
+                <Link href="/compare" className="text-gray-300 hover:text-[#00ff88] transition-colors">
+                  Hardware Compare Studio
                 </Link>
               </li>
               <li>
@@ -60,6 +71,11 @@ export function Footer() {
               <li>
                 <Link href="/about" className="text-gray-300 hover:text-[#00ff88] transition-colors">
                   About the Creator
+                </Link>
+              </li>
+              <li>
+                <Link href="/admin" className="text-gray-400 hover:text-[#00d4ff] text-xs transition-colors">
+                  Admin &amp; Monetization Desk
                 </Link>
               </li>
             </ul>
@@ -102,9 +118,12 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} RigCraft PC Builder. Created by <span className="text-white font-medium">Harsh Sisodia</span> (12 Years Old).
           </p>
-          <div className="flex items-center gap-1.5 text-gray-400">
-            <span>Built with precision for PC enthusiasts</span>
-            <Heart className="w-3.5 h-3.5 text-pink-500 fill-pink-500 inline" />
+          <div className="flex items-center gap-4">
+            <AffiliateDisclosureModal />
+            <div className="flex items-center gap-1.5 text-gray-400">
+              <span>Built with precision</span>
+              <Heart className="w-3.5 h-3.5 text-pink-500 fill-pink-500 inline" />
+            </div>
           </div>
         </div>
       </div>

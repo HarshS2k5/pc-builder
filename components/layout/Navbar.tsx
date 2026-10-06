@@ -32,27 +32,41 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1.5">
+          <nav className="hidden md:flex items-center gap-1">
             <Link
               href="/"
-              className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm font-semibold text-gray-200 hover:text-white hover:bg-white/5 transition-all"
+              className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-semibold text-gray-200 hover:text-white hover:bg-white/5 transition-all"
             >
               <Cpu className="w-4 h-4 text-[#00ff88]" />
-              <span>PC Configurator</span>
+              <span>Configurator</span>
+            </Link>
+            <Link
+              href="/builds"
+              className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-semibold text-gray-200 hover:text-white hover:bg-white/5 transition-all"
+            >
+              <Sparkles className="w-4 h-4 text-amber-400" />
+              <span>Build Guides</span>
+            </Link>
+            <Link
+              href="/compare"
+              className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-semibold text-gray-200 hover:text-white hover:bg-white/5 transition-all"
+            >
+              <Scale className="w-4 h-4 text-[#00d4ff]" />
+              <span>Compare Studio</span>
             </Link>
             <Link
               href="/presets"
-              className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm font-semibold text-gray-200 hover:text-white hover:bg-white/5 transition-all"
+              className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-semibold text-gray-200 hover:text-white hover:bg-white/5 transition-all"
             >
-              <Layers className="w-4 h-4 text-[#00d4ff]" />
-              <span>Curated Builds</span>
+              <Layers className="w-4 h-4 text-purple-400" />
+              <span>Presets</span>
             </Link>
             <Link
               href="/about"
-              className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm font-semibold text-gray-200 hover:text-white hover:bg-white/5 transition-all"
+              className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-semibold text-gray-200 hover:text-white hover:bg-white/5 transition-all"
             >
-              <Info className="w-4 h-4 text-purple-400" />
-              <span>About the Creator</span>
+              <Info className="w-4 h-4 text-gray-400" />
+              <span>About</span>
             </Link>
           </nav>
 
@@ -101,11 +115,27 @@ export function Navbar() {
             <span>PC Configurator</span>
           </Link>
           <Link
+            href="/builds"
+            onClick={() => setMobileMenuOpen(false)}
+            className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-200 hover:text-white hover:bg-white/5"
+          >
+            <Sparkles className="w-4 h-4 text-amber-400" />
+            <span>Build Guides (SEO)</span>
+          </Link>
+          <Link
+            href="/compare"
+            onClick={() => setMobileMenuOpen(false)}
+            className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-200 hover:text-white hover:bg-white/5"
+          >
+            <Scale className="w-4 h-4 text-[#00d4ff]" />
+            <span>Compare Studio</span>
+          </Link>
+          <Link
             href="/presets"
             onClick={() => setMobileMenuOpen(false)}
             className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-200 hover:text-white hover:bg-white/5"
           >
-            <Layers className="w-4 h-4 text-[#00d4ff]" />
+            <Layers className="w-4 h-4 text-purple-400" />
             <span>Curated Builds</span>
           </Link>
           <Link
@@ -113,7 +143,7 @@ export function Navbar() {
             onClick={() => setMobileMenuOpen(false)}
             className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-200 hover:text-white hover:bg-white/5"
           >
-            <Info className="w-4 h-4 text-purple-400" />
+            <Info className="w-4 h-4 text-gray-400" />
             <span>About the Creator</span>
           </Link>
           <div className="pt-2 border-t border-white/10">

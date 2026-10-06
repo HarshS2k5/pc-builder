@@ -32,8 +32,19 @@ export interface CompatibilityReport {
 }
 
 // ---------------------------------------------------------------------------
-// Base Component Interface
-// ---------------------------------------------------------------------------
+export interface ComponentRetailer {
+  id: string
+  name: string
+  logo?: string
+  priceInr?: number
+  priceUsd?: number
+  url: string
+  isAffiliate?: boolean
+  affiliateTag?: string
+  stockStatus: 'In Stock' | 'Limited Stock' | 'Pre-Order' | 'Out of Stock'
+  lastUpdated?: string
+  directPurchaseAvailable?: boolean
+}
 
 export interface BaseComponent {
   id: string
@@ -46,6 +57,12 @@ export interface BaseComponent {
   tier: 'entry' | 'mid' | 'high' | 'enthusiast'
   releaseYear?: number
   verifiedSpec: boolean
+  retailers?: ComponentRetailer[]
+  isSponsored?: boolean
+  sponsorName?: string
+  sponsoredLabel?: string
+  affiliateNotice?: string
+  priceLastVerified?: string
 }
 
 // ---------------------------------------------------------------------------
@@ -259,3 +276,85 @@ export interface BuildPreset {
   description: string
   partIds: Record<ComponentCategory, string>
 }
+
+// ---------------------------------------------------------------------------
+// Monetization & Sponsored Placements Architecture
+// ---------------------------------------------------------------------------
+
+export interface SponsoredPlacement {
+  id: string
+  componentId: string
+  category: ComponentCategory
+  sponsorName: string
+  badgeLabel: string // e.g. "Featured Partner", "Sponsored Choice"
+  placementSlot: 'builder-featured' | 'compare-top' | 'seo-spotlight'
+  destinationUrl: string
+  startDate: string
+  endDate: string
+  isActive: boolean
+  disclaimer: string
+}
+
+export interface RetailerConfig {
+  id: string
+  name: string
+  region: 'IN' | 'US' | 'GLOBAL'
+  baseUrl: string
+  affiliateTagParam: string
+  affiliateTagValue: string
+  isEnabled: boolean
+}
+
+export interface MonetizationSettings {
+  affiliateNoticeEnabled: boolean
+  sponsoredProductsEnabled: boolean
+  multiRetailerEnabled: boolean
+  currencyRates: {
+    usdToInr: number
+    lastUpdated: string
+  }
+  retailers: RetailerConfig[]
+}
+
+// ---------------------------------------------------------------------------
+// Analytics Tracking Types
+// ---------------------------------------------------------------------------
+
+export type AnalyticsEventType =
+  | 'check_price_clicked'
+  | 'build_created'
+  | 'build_completed'
+  | 'comparison_viewed'
+  | 'recommendation_generated'
+  | 'preset_loaded'
+  | 'report_exported'
+
+export interface AnalyticsEvent {
+  id: string
+  type: AnalyticsEventType
+  timestamp: string
+  metadata: Record<string, string | number | boolean | undefined>
+}
+
+// ---------------------------------------------------------------------------
+// SEO Build Pages Schema
+// ---------------------------------------------------------------------------
+
+export interface SeoBuildPage {
+  slug: string
+  title: string
+  metaTitle: string
+  metaDescription: string
+  targetBudgetInr: number
+  targetBudgetUsd: number
+  categoryTag: string
+  resolutionTarget: '1080p' | '1440p' | '4K'
+  primaryUseCase: string
+  headlineDescription: string
+  componentRationale: Record<ComponentCategory, string>
+  partIds: Record<ComponentCategory, string>
+  upgradePaths: string[]
+  publishedDate: string
+  lastUpdatedDate: string
+}
+
